@@ -1,13 +1,19 @@
+<script setup>
+const name = defineModel('name');
+const level = defineModel('level');
+const bio = defineModel('bio');
+</script>
+
 <template>
     <h3>Edit your character</h3>
     <form>
       <section>
         <label for="name">Name</label>
-        <input type="text" placeholder="Name" id="name" />
+        <input v-model="name" type="text" placeholder="Name" id="name" />
       </section>
       <section>
         <label for="level">Level</label>
-        <input type="number" min="0" placeholder="Level" id="level" />
+        <input v-model="level" type="number" min="0" placeholder="Level" id="level" />
       </section>
       <section>
         <label>Job:</label>
@@ -28,7 +34,7 @@
       </section>
       <section>
         <label for="bio">Bio</label>
-        <textarea id="bio" rows="3"></textarea>
+        <textarea v-model="bio" id="bio" rows="3"></textarea>
       </section>
     </form>
   </template>
