@@ -36,7 +36,13 @@ const respawn = () => {
     <CardStats :race="race" :bio="bio" />
     <button @click="respawn">Respawn?</button>
   </section>
-  <EditForm v-model:name="name" v-model:level="level" v-model:bio="bio" />
+  <EditForm 
+  v-model:name.trim.cap="name" 
+  v-model:level.number="level" 
+  v-model:bio="bio" 
+  v-model:job="job" 
+  v-model:race="race" 
+  />
 </template>
 
 <style scoped>

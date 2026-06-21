@@ -1,7 +1,16 @@
 <script setup>
-const name = defineModel('name');
+const [name, modifiers] = defineModel('name', {
+  set(value) {
+    if (modifiers.cap) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+    return value;
+  }
+});
 const level = defineModel('level');
 const bio = defineModel('bio');
+const job = defineModel('job');
+const race = defineModel('race');
 </script>
 
 <template>
@@ -17,7 +26,7 @@ const bio = defineModel('bio');
       </section>
       <section>
         <label>Job:</label>
-        <select>
+        <select v-model="job">  
           <option value="fighter">Fighter</option>
           <option value="ranger">Ranger</option>
           <option value="sorcerer">Sorcerer</option>
@@ -25,11 +34,11 @@ const bio = defineModel('bio');
       </section>
       <section>
         <label>Race:</label>
-        <input type="radio" name="race" id="human" value="human" />
+        <input v-model="race" type="radio" name="race" id="human" value="human" />
         <label for="human">Human</label>
-        <input type="radio" name="race" id="elf" value="elf" />
+        <input v-model="race" type="radio" name="race" id="elf" value="elf" />
         <label for="elf">Elf</label>
-        <input type="radio" name="race" id="orc" value="orc" />
+        <input v-model="race" type="radio" name="race" id="orc" value="orc" />
         <label for="orc">Orc</label>
       </section>
       <section>
